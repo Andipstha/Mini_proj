@@ -1,0 +1,1 @@
+oid gotoxy(short x, short y);
