@@ -47,31 +47,34 @@ int main()
         switch (choice)
         {
             case '1':
-            fseek( ft,0, SEEK_END);
+            fseek(fp,0, SEEK_END);
             another='y';
-        {         
+            while(another=='Y')
+            {         
                 printf("\nEnter name age and basic sal.");
                 scanf("%s %d %f",e.name,&e.age,&e.bs);
                 fwrite(&e,recsize,1,fp);
                 printf("\nAdd another Record(Y/N)");
-                fflush(stdin);
-        } 
-        break;
-        case '2':
-                rewind (ft);
+                another=getche();
+            } 
+            break;
+            case '2':
+            {
+                rewind (fp);
                 while ((&e,recsize,1, ft)==1)
                 printf("\n%s %s %d %f",e.name,e.age,e.bs0);
+            }
             break;
-        case'3':
-        another ='y';
+            case'3':
+            another ='y';
             while(another=='Y')
             {
                 printf("\nEnter name of employee to modify");
                 scanf("%s",emp.name);
 
-                rewind (ft);
+                rewind (fp);
                 while(fread(&e,recsize,1,ft)==1) 
-        { 
+            { 
                 if(strcmp(e.name,empname)==0)
                 { 
                     printf("\nEnter new name,age &bs");
@@ -80,10 +83,10 @@ int main()
                     fwrite (&e,recsize,1, fb);
                     break ;
                 }
-        }
-        print("\nModify another Record (Y/N)");
-        fflush(stdin);
-        another=getche();
+            }
+            print("\nModify another Record (Y/N)");
+            fflush(stdin);
+            another=getche();
         }
         break; 
         case '4':
